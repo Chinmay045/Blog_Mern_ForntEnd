@@ -1,18 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import Header from './components/Header';
 import { Route, Routes } from 'react-router-dom';
-import Auth from './components/Login';
+import Auth from './components/Auth';
 import Blogs from './components/Blogs';
 import UserBlogs from './components/UserBlogs';
 import AddBlog from './components/AddBlog';
 import BlogDetail from './components/BlogDetail';
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  console.log(isLoggedIn);
+
   return (
     <React.Fragment>
       <header>
-        <Header />
+        <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
         <main>
           <Routes>
             <Route path='/auth' element={<Auth />}></Route>
